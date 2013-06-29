@@ -21,7 +21,9 @@
                 function onpointup(evt){
                     self.$.surface.removeEventListener('pointermove', onpointmove, false);
                     self.$.surface.removeEventListener('pointerup', onpointup, false);
-                }
+                    var event = new CustomEvent("drawend", {"detail":{}});
+		    self.dispatchEvent(event);
+		}
                 
                 this.$.surface.addEventListener('pointerdown', function onpointdown(evt){
                     self.drawStart(evt.clientX, evt.clientY);
