@@ -14,7 +14,15 @@
     <link rel="import" href="whiteboard.html">
 </head>
 <body>
+    <input id="color" type="color"\>
+    <whiteboard-canvas id="whiteboard" color="green" width="1"></whiteboard-canvas>
     
-    <whiteboard-canvas color="green" width="1"></whiteboard-canvas>
+    <script>
+        var whiteboard = document.getElementById('whiteboard');
+        var color = document.getElementById('color');
+        color.addEventListener('change', function(event){
+            whiteboard.color = this.value;
+        }, false);
+    </script>
 </body>
 </html>
