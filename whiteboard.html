@@ -1,4 +1,4 @@
-<element name="whiteboard-canvas" attributes="paths">
+<element name="whiteboard-canvas" attributes="paths color width">
     <template>
         <canvas id="surface" touch-action="none"></canvas>
     </template>
@@ -11,8 +11,9 @@
                 var ctx = this.$.surface.getContext("2d");
                 ctx.canvas.width  = window.innerWidth;
                 ctx.canvas.height = window.innerHeight;
-                ctx.strokeStyle = "black";
-                ctx.fillStyle = "black";
+                ctx.strokeStyle = this.color;
+                ctx.fillStyle = this.color;
+                ctx.lineWidth = this.width;
                 
                 function onpointmove(evt){
                     console.log(evt);
