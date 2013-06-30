@@ -15,18 +15,19 @@
                 ctx.fillStyle = "black";
                 
                 function onpointmove(evt){
-                    self.draw(evt.clientX, evt.clientY);
+                    console.log(evt);
+                    self.draw(evt.offsetX, evt.offsetY);
                 }
                 
                 function onpointup(evt){
                     self.$.surface.removeEventListener('pointermove', onpointmove, false);
                     self.$.surface.removeEventListener('pointerup', onpointup, false);
                     var event = new CustomEvent("drawend", {"detail":{}});
-		    self.dispatchEvent(event);
-		}
+                    self.dispatchEvent(event);
+                }
                 
                 this.$.surface.addEventListener('pointerdown', function onpointdown(evt){
-                    self.drawStart(evt.clientX, evt.clientY);
+                    self.drawStart(evt.offsetX, evt.offsetY);
                     self.$.surface.addEventListener('pointerup', onpointup, false);
                     self.$.surface.addEventListener('pointermove', onpointmove, false);
                 }, false);
